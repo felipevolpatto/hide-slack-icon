@@ -3,7 +3,6 @@
 GNOME Shell extension that hides **only** the Slack icon on the top panel. Other AppIndicators stay visible, and Slack keeps running from the Dock.
 
 [![license](https://img.shields.io/badge/license-MIT-green.svg)](/LICENSE)
-[![Get it on GNOME Extensions](https://raw.githubusercontent.com/andyholmes/gnome-shell-extensions-badge/master/get-it-on-ego.svg?sanitize=true)](https://extensions.gnome.org/extension/10959/hide-slack-icon/)
 
 **Before** (Slack tray icon visible):
 

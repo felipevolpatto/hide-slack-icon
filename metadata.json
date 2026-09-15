@@ -4,5 +4,5 @@
   "description": "Hides only the Slack icon from the top panel on Ubuntu 22.04+",
   "version": 1,
   "shell-version": ["42", "43", "44", "45", "46", "47"],
-  "url": "https://github.com/organisys/hide-slack-icon"
+  "url": "https://github.com/felipevolpatto/hide-slack-icon"
 }

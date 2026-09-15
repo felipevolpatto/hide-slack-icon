@@ -1,0 +1,11 @@
+---
+description: Rules for the Hide Slack Icon GNOME extension
+alwaysApply: true
+---
+
+Read `CLAUDE.md` and `PRD_Hide_Slack_Icon.md` before changing the extension.
+
+- Hide only indicators whose id/class/name contains `slack` (case-insensitive) in `Main.panel.statusArea`.
+- Remove the `GLib.timeout_add_seconds` source in `disable()` and call `.show()` on hidden actors.
+- GNOME 42 (this host) uses `extension.js` + `imports`. GNOME 45+ uses `extension-esm.js`. Keep `lib/hideSlackCore.js` and `lib/hideSlackCore.esm.js` aligned.
+- Install with `make install`; GNOME does not load the engineering directory directly.

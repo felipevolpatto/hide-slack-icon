@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This project is a GNOME Shell extension. Before editing code, read `CLAUDE.md` (rules, 42 vs 45+ loaders, DoD) and `PRD_Hide_Slack_Icon.md` (requirements).
+This project is a GNOME Shell extension. Before editing code, read `CLAUDE.md` (rules, 42 vs 45+ loaders, DoD).
 
 Operational summary:
 

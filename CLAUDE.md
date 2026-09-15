@@ -6,8 +6,6 @@ Instructions for agents (Claude, Cursor, Codex) in this repository.
 
 GNOME Shell extension **Hide Slack Icon** (`hide-slack-icon@felipevolpatto.github.io`). Goal: hide **only** the Slack icon on the Top Panel, without touching other AppIndicators and without quitting Slack.
 
-Product source of truth: `PRD_Hide_Slack_Icon.md`.
-
 ## Host environment
 
 - Ubuntu 22.04.5 LTS, GNOME Shell **42.9**, **X11** session → use the **legacy** loader (`extension.js` + `imports.*`).
@@ -75,7 +73,7 @@ xwininfo -id 0x26000df | grep 'Map State'   # IsViewable = visible
 
 `org.gnome.Shell.Eval` is **disabled** (unsafe-mode off), so `statusArea` cannot be inspected over D-Bus.
 
-## Definition of Done (PRD)
+## Definition of Done
 
 Verified 2026-09-15, GNOME 42.9 / X11, Slack snap 260.
 

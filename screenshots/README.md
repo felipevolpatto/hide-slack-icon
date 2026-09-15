@@ -1,6 +1,6 @@
 # Screenshots
 
-Crops of the top-right panel on Ubuntu 22.04 / GNOME 42 (2026-09-15). Use these on the extensions.gnome.org listing after review.
+Crops of the top-right panel on Ubuntu 22.04 / GNOME 42 (2026-09-15), captured with a single AppIndicator extension enabled so no tray icon is duplicated. Use these on the extensions.gnome.org listing after review.
 
 | File | What it shows |
 | --- | --- |

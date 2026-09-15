@@ -33,7 +33,7 @@ Full compatibility needs `metadata.json` to list every supported shell version a
 
 ```json
 {
-  "uuid": "hide-slack-icon@organisys.local",
+  "uuid": "hide-slack-icon@felipevolpatto.github.io",
   "name": "Hide Slack Icon",
   "description": "Hides only the Slack icon from the top panel on Ubuntu 22.04+",
   "shell-version": [ "42", "43", "44", "45", "46", "47" ]
@@ -60,7 +60,7 @@ Use version-specific loaders: GNOME 45+ class + ESM, with a separate legacy entr
 
 Develop in this repository. Install into:
 
-`~/.local/share/gnome-shell/extensions/hide-slack-icon@organisys.local`
+`~/.local/share/gnome-shell/extensions/hide-slack-icon@felipevolpatto.github.io`
 
 GNOME does not load the engineering directory directly.
 
@@ -79,7 +79,7 @@ Ship `metadata.json` with `"shell-version": [ "42", "43", "44", "45", "46", "47"
 2. Restart the session (X11: `Alt+F2` → `r`; Wayland: log out / log in).
 3. Enable:
 
-   `gnome-extensions enable hide-slack-icon@organisys.local`
+   `gnome-extensions enable hide-slack-icon@felipevolpatto.github.io`
 4. Open Slack and confirm the top-panel icon is hidden.
 
 ---

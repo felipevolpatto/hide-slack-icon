@@ -14,11 +14,13 @@ See [PRD_Hide_Slack_Icon.md](./PRD_Hide_Slack_Icon.md) for product requirements.
 
 `metadata.json` declares `"shell-version": ["42", "43", "44", "45", "46", "47"]`.
 
+UUID: `hide-slack-icon@felipevolpatto.github.io`
+
 This repository is the **source**. The copy GNOME actually loads lives at:
 
-`~/.local/share/gnome-shell/extensions/hide-slack-icon@organisys.local`
+`~/.local/share/gnome-shell/extensions/hide-slack-icon@felipevolpatto.github.io`
 
-## Installation
+## Installation (this machine)
 
 ```bash
 make install
@@ -29,10 +31,33 @@ The script detects `gnome-shell` and copies the matching loader.
 GNOME **does not** pick up newly installed extensions at runtime, so:
 
 1. Restart GNOME Shell (X11: `Alt+F2`, type `r`. Wayland: log out / log in).
-2. `make enable` (or `gnome-extensions enable hide-slack-icon@organisys.local`).
+2. `make enable` (or `gnome-extensions enable hide-slack-icon@felipevolpatto.github.io`).
 3. Open Slack and check the top panel.
 
 Uninstall: `make uninstall`.
+
+## Publish to extensions.gnome.org
+
+The Extension Manager **Browse** tab lists [extensions.gnome.org](https://extensions.gnome.org), not GitHub. GitHub is only the project homepage.
+
+1. Create an account at [extensions.gnome.org](https://extensions.gnome.org) (GNOME / GitLab login).
+2. Build the review zips (runtime files only; two GNOME ranges, same UUID):
+
+```bash
+make pack
+```
+
+That writes:
+
+- `dist/hide-slack-icon-gnome42-44.zip`
+- `dist/hide-slack-icon-gnome45-47.zip`
+
+3. Upload at [https://extensions.gnome.org/upload/](https://extensions.gnome.org/upload/):
+   - First: the 42–44 zip (creates the listing).
+   - Then: the 45–47 zip (new version; EGO still serves 42–44 to older shells).
+4. Wait for review email. After approval, add screenshots on the extension page (`screenshots/panel-before.png` and `screenshots/panel-after.png`). Browse may take a while to refresh.
+
+Do not zip this whole git tree. `make pack` already excludes docs, tests, and install scripts.
 
 ## How it works
 

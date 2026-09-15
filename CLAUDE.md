@@ -4,7 +4,7 @@ Instructions for agents (Claude, Cursor, Codex) in this repository.
 
 ## What this is
 
-GNOME Shell extension **Hide Slack Icon** (`hide-slack-icon@organisys.local`). Goal: hide **only** the Slack icon on the Top Panel, without touching other AppIndicators and without quitting Slack.
+GNOME Shell extension **Hide Slack Icon** (`hide-slack-icon@felipevolpatto.github.io`). Goal: hide **only** the Slack icon on the Top Panel, without touching other AppIndicators and without quitting Slack.
 
 Product source of truth: `PRD_Hide_Slack_Icon.md`.
 
@@ -33,12 +33,13 @@ Two consequences:
 ## Architecture
 
 ```
-metadata.json              UUID + shell-version 42–47
+metadata.json              UUID + shell-version 42–47 (no EGO `version` field)
 extension.js               GNOME 42–44 (init/enable/disable)
 extension-esm.js           GNOME 45+ (export default class extends Extension)
 lib/hideSlackCore.js       shared logic (GJS imports)
 lib/hideSlackCore.esm.js   same logic (ESM export)
 scripts/install.sh         copies the matching loader to ~/.local/share/gnome-shell/extensions/
+scripts/pack.sh            EGO zips in dist/ (42–44 legacy, 45–47 ESM)
 ```
 
 A single `extension.js` cannot use both `import` and `imports.ui.main`: GJS 42 fails to parse `import`; the 45+ loader requires ESM.
@@ -50,12 +51,14 @@ A single `extension.js` cannot use both `import` and `imports.ui.main`: GJS 42 f
 3. **Revert:** `disable()` must `.show()` the actors this extension hid.
 4. **Dual-core:** any change in `lib/hideSlackCore.js` must be mirrored in `lib/hideSlackCore.esm.js` (and vice versa).
 5. **No prefs/schema** at this stage. No settings, extra D-Bus, or CSS.
-6. **Do not** hardcode `/usr` paths. UUID lives only in `metadata.json` (scripts read it from there).
+6. **Do not** hardcode `/usr` paths. UUID only in `metadata.json` (scripts read it from there). Use `hide-slack-icon@felipevolpatto.github.io` (EGO namespace). Never ship `@organisys.local` or a `.local` UUID on EGO.
+7. **EGO packs:** `make pack` only. Two zips, same UUID, split `shell-version`. Do not put tests, docs, or `scripts/` in the zip. Do not set `version` in metadata (EGO owns that field).
 
 ## Commands
 
 ```bash
 make test             # matcher without a live shell (gjs)
+make pack             # dist/*.zip for extensions.gnome.org
 make install          # copy into the extensions directory
 make enable
 make disable

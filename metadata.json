@@ -1,8 +1,7 @@
 {
-  "uuid": "hide-slack-icon@organisys.local",
+  "uuid": "hide-slack-icon@felipevolpatto.github.io",
   "name": "Hide Slack Icon",
-  "description": "Hides only the Slack icon from the top panel on Ubuntu 22.04+",
-  "version": 1,
+  "description": "Hides only the Slack icon from the top panel on Ubuntu 22.04+.\n\nOther AppIndicators (Docker, AnyDesk, Chrome, flameshot, and so on) stay visible. Slack itself keeps running and remains reachable from the Dock.",
   "shell-version": ["42", "43", "44", "45", "46", "47"],
   "url": "https://github.com/felipevolpatto/hide-slack-icon"
 }

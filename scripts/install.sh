@@ -5,6 +5,15 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 UUID="$(python3 -c 'import json; print(json.load(open("'"$ROOT"'/metadata.json"))["uuid"])')"
 DEST="${HOME}/.local/share/gnome-shell/extensions/${UUID}"
 SHELL_MAJOR="$(gnome-shell --version 2>/dev/null | grep -oE '[0-9]+' | head -1 || echo 0)"
+# Previous local UUID from before EGO-ready metadata.
+LEGACY_UUID="hide-slack-icon@organisys.local"
+LEGACY_DEST="${HOME}/.local/share/gnome-shell/extensions/${LEGACY_UUID}"
+
+if [[ -d "$LEGACY_DEST" ]]; then
+  gnome-extensions disable "$LEGACY_UUID" 2>/dev/null || true
+  rm -rf "$LEGACY_DEST"
+  echo "Removed previous local UUID ${LEGACY_UUID}"
+fi
 
 mkdir -p "$DEST/lib"
 cp "$ROOT/metadata.json" "$DEST/metadata.json"

@@ -14,6 +14,22 @@ const CASES = [
     [true, 'appindicator-legacy:slack:331804', { accessible_name: 'slack' }],
     [true, 'appindicator-org.kde.StatusNotifierItem-1-1', { accessible_name: 'Slack' }],
     [true, 'slackIndicator', {}],
+    // Snap Slack SNI: panel key has no "slack"; Id does.
+    [true, 'appindicator-:1.103/StatusNotifierItem', {
+        _indicator: { id: 'Slack_status_icon_1', title: '', accessibleName: '' },
+    }],
+    // Id without "slack", but the snap icon theme path still identifies it.
+    [true, 'appindicator-:1.50/StatusNotifierItem', {
+        _indicator: {
+            id: 'status_icon_1',
+            title: '',
+            accessibleName: '',
+            _proxy: { IconThemePath: '/run/user/1001/snap.slack/org.chromium.Chromium.abc' },
+        },
+    }],
+    [false, 'appindicator-:1.236/StatusNotifierItem', {
+        _indicator: { id: 'Cursor_status_icon_1', title: '', accessibleName: '' },
+    }],
     [false, 'appindicator-legacy:flameshot:10686', { accessible_name: 'flameshot' }],
     [false, 'appindicator-legacy:docker-desktop:4242', { accessible_name: 'Docker Desktop' }],
     [false, 'appindicator-legacy:AnyDesk:777', { accessible_name: 'AnyDesk' }],

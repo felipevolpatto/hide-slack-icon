@@ -23,6 +23,8 @@ Main.panel.statusArea['appindicator-legacy:Slack:<pid>']
 
 (`uniqueId` = `legacy:${wm_class}:${pid}`, `accessible_name` = `wm_class` = `Slack`.)
 
+Snap Slack also publishes a real StatusNotifierItem. In that case the panel key is `appindicator-:<bus>/StatusNotifierItem` (no “slack”), and `Title` / the accessible name are empty. The match has to read `actor._indicator.id` (`Slack_status_icon_1`) and `IconThemePath` (`snap.slack`). AppIndicators sets `visible = true` again while the item is Active, so a hidden actor must stay hidden until `disable()`.
+
 Two consequences:
 
 1. The id **includes the pid**, so it changes every Slack restart. Never hardcode the id — polling plus the regex is what makes this work.
